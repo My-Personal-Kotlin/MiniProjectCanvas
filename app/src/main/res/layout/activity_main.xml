@@ -14,6 +14,8 @@
 
         <com.minipaint.customcanvas.MyCanvasView
             android:id="@+id/myCanvasView"
+            android:contentDescription="@string/canvas_content_description"
+            android:fitsSystemWindows="true"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@+id/button2"

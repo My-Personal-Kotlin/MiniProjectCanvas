@@ -25,7 +25,7 @@ class MyCanvasView @JvmOverloads constructor(
     //      4-> Paint
     //
 
-    private val touchTolerance = ViewConfiguration.get(context).scaledTouchSlop
+    private val touchTolerance = 1f //ViewConfiguration.get(context).scaledTouchSlop
 
     private var motionTouchEventX = 0f
     private var motionTouchEventY = 0f
@@ -34,6 +34,11 @@ class MyCanvasView @JvmOverloads constructor(
     private var currentY = 0f
 
     private lateinit var frame: Rect
+
+
+//    private lateinit var extraCanvas: Canvas
+//    private lateinit var extraBitmap: Bitmap
+
 
     // Path representing the drawing so far
     private val drawing = Path()
@@ -64,6 +69,11 @@ class MyCanvasView @JvmOverloads constructor(
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
 
+//        if (::extraBitmap.isInitialized) extraBitmap.recycle()
+//        extraBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+//        extraCanvas = Canvas(extraBitmap)
+//        extraCanvas.drawColor(backgroundColor)
+
         // Calculate a rectangular frame around the picture.
         val inset = 40
         frame = Rect(inset, inset, width - inset, height - inset)
@@ -71,6 +81,9 @@ class MyCanvasView @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+
+//        canvas.drawBitmap(extraBitmap, 0f, 0f, null)
+
 
         canvas.drawColor(backgroundColor)
 
@@ -98,6 +111,7 @@ class MyCanvasView @JvmOverloads constructor(
     }
 
     private fun touchStart() {
+    //    path.moveTo(motionTouchEventX, motionTouchEventY)
         currentPath.moveTo(motionTouchEventX, motionTouchEventY)
         currentX = motionTouchEventX
         currentY = motionTouchEventY
@@ -110,6 +124,8 @@ class MyCanvasView @JvmOverloads constructor(
             // QuadTo() adds a quadratic bezier from the last point,
             // approaching control point (x1,y1), and ending at (x2,y2).
             currentPath.quadTo(currentX, currentY, (motionTouchEventX + currentX) / 2, (motionTouchEventY + currentY) / 2)
+//            path.quadTo(currentX, currentY, (motionTouchEventX + currentX) / 2, (motionTouchEventY + currentY) / 2)
+
             currentX = motionTouchEventX
             currentY = motionTouchEventY
             // Draw the path in the extra bitmap to cache it.
@@ -124,6 +140,8 @@ class MyCanvasView @JvmOverloads constructor(
 
         // Reset the current path for the next touch
         currentPath.reset()
+
+       // path.reset()
     }
 
     fun clear() {
