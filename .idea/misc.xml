@@ -3,7 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_brush_white.xml" value="0.16018518518518518" />
+        <entry key="app/src/main/res/drawable/ic_clear_black.xml" value="0.16018518518518518" />
+        <entry key="app/src/main/res/drawable/ic_format_color_fill_black.xml" value="0.16018518518518518" />
+        <entry key="app/src/main/res/drawable/ic_format_paint_black.xml" value="0.16018518518518518" />
+        <entry key="app/src/main/res/drawable/ic_text_format_black.xml" value="0.16018518518518518" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_main2.xml" value="0.2666809108481975" />
+        <entry key="app/src/main/res/layout/brush_width_view.xml" value="0.11322463768115942" />
+        <entry key="app/src/main/res/layout/brush_with_view.xml" value="0.16869300911854104" />
+        <entry key="app/src/main/res/layout/options_bottom_sheet.xml" value="0.16869300911854104" />
+        <entry key="app/src/main/res/menu/main_menu.xml" value="0.2518518518518518" />
+        <entry key="app/src/main/res/menu/menu.xml" value="0.1921875" />
       </map>
     </option>
   </component>

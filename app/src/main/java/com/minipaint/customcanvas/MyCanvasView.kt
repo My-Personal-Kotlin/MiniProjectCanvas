@@ -1,13 +1,14 @@
-package com.minipaint
+package com.minipaint.customcanvas
 
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
 import androidx.core.content.res.ResourcesCompat
+import com.minipaint.R
+import com.minipaint.someone.PaintView
 
 private const val STROKE_WIDTH = 12f
 
@@ -39,6 +40,8 @@ class MyCanvasView @JvmOverloads constructor(
     // Path representing what's currently being drawn
     private val currentPath = Path()
 
+    private val mBlur: MaskFilter = BlurMaskFilter(5f, BlurMaskFilter.Blur.NORMAL)
+
     private val backgroundColor = ResourcesCompat.getColor(resources, R.color.colorBackground, null)
 
     private val drawColor = ResourcesCompat.getColor(resources, R.color.colorPaint, null)
@@ -54,6 +57,7 @@ class MyCanvasView @JvmOverloads constructor(
         strokeJoin = Paint.Join.ROUND // default: MITER
         strokeCap = Paint.Cap.ROUND // default: BUTT
         strokeWidth = STROKE_WIDTH // default: Hairline-width (really thin)
+      //  maskFilter = mBlur
     }
 
 
@@ -122,5 +126,9 @@ class MyCanvasView @JvmOverloads constructor(
         currentPath.reset()
     }
 
+    fun clear() {
+        drawing.reset()
+        invalidate()
+    }
 
 }
